@@ -14,12 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjeManag">
         <activity
+            android:name=".activities.TaskListActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ProjeManag.NoActionBar"
+            />
+        <activity
             android:name=".activities.CreateBoardActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.ProjeManag.NoActionBar"
-            android:windowSoftInputMode="adjustResize"
-            />
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activities.MyProfileActivity"
             android:exported="false"
