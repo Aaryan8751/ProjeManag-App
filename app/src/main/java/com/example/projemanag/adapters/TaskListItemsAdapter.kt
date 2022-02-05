@@ -1,5 +1,6 @@
 package com.example.projemanag.adapters
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.content.res.Resources
@@ -27,7 +28,7 @@ open class TaskListItemsAdapter(private val context: Context,private var list:Ar
         return MyViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, @SuppressLint("RecyclerView") position: Int) {
         val model = list[position]
         if(holder is MyViewHolder){
             if(position== list.size - 1) {
@@ -112,6 +113,14 @@ open class TaskListItemsAdapter(private val context: Context,private var list:Ar
             holder.itemView.rv_card_list.setHasFixedSize(true)
             val adapter = CardListItemsAdapter(context,model.cards)
             holder.itemView.rv_card_list.adapter = adapter
+
+            adapter.setOnClickListener(object :CardListItemsAdapter.OnClickListener{
+                override fun onClick(cardPosition: Int) {
+                    if(context is TaskListActivity){
+                        context.cardDetails(position, cardPosition)
+                    }
+                }
+            })
 
         }
     }
